@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis Results - SymptoCheck</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(120deg, #fffde7, #e8f5e9);
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .container {
+            margin-top: 60px;
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        h1 {
+            color: #43a047;
+            font-weight: bold;
+        }
+        .list-group-item {
+            font-size: 18px;
+        }
+        .badge {
+            font-size: 16px;
+            background-color: #43a047;
+        }
+        .btn-secondary {
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Top 3 Likely Diagnoses</h1>
+        <p class="lead mt-3 mb-4">Based on the symptoms you've selected, here are the most probable conditions:</p>
+        <ul class="list-group">
+            {% for disease, prob in diseases.items() %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ disease }}
+                    <span class="badge badge-pill">{{ (prob * 100) | round(2) }}%</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="/" class="btn btn-secondary btn-lg">Back to SymptoCheck</a>
+    </div>
+</body>
+</html>
